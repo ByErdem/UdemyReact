@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import users from './data/users.json';
+
 const UserContext = React.createContext();
 //Provider, Consumer
 
-class UserProvider extends Component {
+export class UserProvider extends Component {
+    state = {
+        users: users
+    }
     render() {
         return (
-            <UserContext.Provider>
+            <UserContext.Provider value={this.state}>
                 {this.props.children}
             </UserContext.Provider>
         );
     }
 }
 
-export default context;
+const UserConsumer = UserContext.Consumer;
+
+export default UserConsumer;
